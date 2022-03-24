@@ -92,7 +92,7 @@ color:white;
 .item>p{
   margin-bottom:3rem;
 }
-.button,.plus_minus_button{
+.button,.minus_btn,.plus_btn{
   color: #212529;
   border:0.5px solid #212529;
   font-size:18px;
@@ -103,7 +103,7 @@ color:white;
   background-color: #212529;
   color:white;
 }
-.btn_div{
+.btn_div,.plus_minus_div{
   display:flex;
   justify-content: center;
 }

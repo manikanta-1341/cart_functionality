@@ -96,8 +96,7 @@ export default function App(props) {
               Plus_btn(e)}">+</button>
         </div>
         `
-
-      :document.querySelector(`.item_qty${e.Id}`).innerText = setItem_qty(
+        :document.querySelector(`.item_qty${e.Id}`).innerText = setItem_qty(
           item_qty + 1
         );
   }
