@@ -88,24 +88,33 @@ export default function App(props) {
     setCart_qty(0);
     setCart_qty(cart_qty + 1);
     new_arr[e.Id - 1].Button_Name === 'Add to cart'
-      ? (document.querySelector(`.btn_div${e.Id}`).innerHTML = `
+      ?document.querySelector(`.btn_div${e.Id}`).innerHTML = `
         <div className="plus_minus_div">
-            <button className="minus_btn" onClick='${Minus_btn()}'>-</button> &nbsp;
+            <button className="minus_btn" onClick='${() => Minus_btn(e)}'>-</button> &nbsp;
             <span className="item_qty${e.Id}">1</span> &nbsp;
             <button className="plus_btn" onClick="${() =>
-              Plus_btn()}">+</button>
+              Plus_btn(e)}">+</button>
         </div>
-        `)
-      : (document.querySelector(`.item_qty${e.Id}`).innerText = setItem_qty(
+        `
+
+      :document.querySelector(`.item_qty${e.Id}`).innerText = setItem_qty(
           item_qty + 1
-        ));
+        );
   }
 
-  function Plus_btn() {
+  function Plus_btn(e) {
     console.log('in plus button');
+    let num = document.querySelector(`#item_qty${e.Id}`).innerText
+    parseInt(num)>=10?document.querySelector(`.item_qty${e.Id}`).innerText = setItem_qty(item_qty + 1):
+    document.querySelector(`.item_qty${e.Id}`).innerText = "Limit Reached"
+    setCart_qty(cart_qty+1)
   }
-  function Minus_btn() {
+  function Minus_btn(e) {
     console.log('in minus button');
+    let num = document.querySelector(`#item_qty${e.Id}`).innerText
+    parseInt(num)>1?document.querySelector(`.item_qty${e.Id}`).innerText = setItem_qty(item_qty - 1):
+    document.querySelector(`.item_qty${e.Id}`).innerText = "Add to cart"
+    cart_qty>=1?setCart_qty(cart_qty-1):setCart_qty(0)
   }
 
   return (
